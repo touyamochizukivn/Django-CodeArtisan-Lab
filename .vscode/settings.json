@@ -8,9 +8,13 @@
         "**/Thumbs.db": true,
         "**/__init__.py": true,
         "**/__pycache__": true,
+        "**/asgi.py": true,
+        "**/wsgi.py": true,
+        "**/manage.py": true,
         "**/tests.py": true,
         "**/apps.py": true,
-        "**/admin.py": true
+        "**/admin.py": true,
+        "**/migrations": true
     },
     "hide-files.files": [],
     "editor.tabSize": 4,
