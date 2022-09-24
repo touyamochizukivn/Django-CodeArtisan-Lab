@@ -11,24 +11,17 @@
 <body>
     <div class="container my-4">
         <h3>All Post</h3>
+        <p><a class="btn btn-success" href="{% url 'add'%}">Add</a></p>
+        {% for post in posts %}
         <div class="card my-3">
-            <h5 class="card-header">Post title</h5>
+            <h5 class="card-header">{{post.title}}</h5>
             <div class="card-body">
-                <div class="card-text">Lorem ipsum dolor sit amet.</div>
+                <p class="card-text">{{post.detail}}</p>
+                <p><a class="btn btn-success" href="{% url 'update' post.id%}">Update</a>
+                <a onclick="return confirm('Are you sure to delete?')" class="btn btn-danger" href="{% url 'delete' post.id%}">Delete</a></p>
             </div>
         </div>
-        <div class="card my-3">
-            <h5 class="card-header">Post title</h5>
-            <div class="card-body">
-                <div class="card-text">Lorem ipsum dolor sit amet.</div>
-            </div>
-        </div>
-        <div class="card my-3">
-            <h5 class="card-header">Post title</h5>
-            <div class="card-body">
-                <div class="card-text">Lorem ipsum dolor sit amet.</div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </body>
 </html>
