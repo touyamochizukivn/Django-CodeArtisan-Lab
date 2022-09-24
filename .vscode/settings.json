@@ -12,5 +12,13 @@
         "**/apps.py": true,
         "**/admin.py": true
     },
-    "hide-files.files": []
+    "hide-files.files": [],
+    "editor.tabSize": 4,
+    "[django-html]": {
+        "editor.tabSize": 2
+    },
+    "[html]": {
+        "editor.tabSize": 2
+    },
+    // "editor.insertSpaces": true
 }
