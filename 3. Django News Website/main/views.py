@@ -10,3 +10,10 @@ def home(request):
         'three_categories': models.Category.objects.all()[0:2],
     }
     return render(request, 'home.html', context)
+
+
+def all_news(request):
+    context = {
+        'all_news': models.News.objects.all(),
+    }
+    return render(request, 'all-news.html', context)
