@@ -24,7 +24,7 @@
 					{% for message in messages %}
 					<p class="text-success">{{message}}</p>
 					{% endfor %}
-					<form method="post" action="/detail/{{news.id}}">
+					<form method="post" action="{% url 'detail' news.id %}">
 						{% csrf_token %}
 						<div class="form-group row">
 							<label class="col-md-2">Name<span class="text-danger">*</span></label>
@@ -73,7 +73,7 @@
 					<div class="card-body">
 						<h5 class="card-title">{{news.title}}</h5>
 						<hr/>
-						<p class="card-text"><a href="/detail/{{news.id}}" class="btn btn-sm btn-primary">Read Full</a></p>
+						<p class="card-text"><a href="{% url 'detail' news.id %}" class="btn btn-sm btn-primary">Read Full</a></p>
 					</div>
 				</div>
 				{% endif %}
