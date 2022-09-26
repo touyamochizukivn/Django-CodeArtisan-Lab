@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.shortcuts import render
 
 from . import models
@@ -20,7 +21,11 @@ def all_news(request):
 
 
 def detail(request, id):
+    news = models.News.objects.get(id=id)
+    category = models.Category.objects.get(id=news.category.id)
+    related_news = category.news_set.all()
     context = {
-        'news': models.News.objects.get(id=id),
+        'news': news,
+        'related_news': related_news,
     }
     return render(request, 'detail.html', context)
