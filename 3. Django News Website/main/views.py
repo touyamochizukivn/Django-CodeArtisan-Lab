@@ -36,3 +36,12 @@ def all_category(request):
         'categories': models.Category.objects.all(),
     }
     return render(request, 'category.html', context)
+
+
+def category(request, id):
+    category = models.Category.objects.get(id=id)
+    context = {
+        'category': category,
+        'all_news': category.news_set.all(),
+    }
+    return render(request, 'all-news.html', context)

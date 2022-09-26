@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <main class="container mt-3 mb-5">
-	<h3 class="border-bottom pb-1 my-4">All News</h3>
+	<h3 class="border-bottom pb-1 my-4">{{category.title}}</h3>
     <!-- News Box -->
     {% for news in all_news %}
 	<div class="card mb-4 shadow">
