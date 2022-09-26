@@ -29,3 +29,10 @@ def detail(request, id):
         'related_news': related_news,
     }
     return render(request, 'detail.html', context)
+
+
+def all_category(request):
+    context = {
+        'categories': models.Category.objects.all(),
+    }
+    return render(request, 'category.html', context)
