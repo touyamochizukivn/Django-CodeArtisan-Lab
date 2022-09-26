@@ -17,3 +17,10 @@ def all_news(request):
         'all_news': models.News.objects.all(),
     }
     return render(request, 'all-news.html', context)
+
+
+def detail(request, id):
+    context = {
+        'news': models.News.objects.get(id=id),
+    }
+    return render(request, 'detail.html', context)
