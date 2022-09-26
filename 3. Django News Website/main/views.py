@@ -1,5 +1,6 @@
 from unicodedata import category
 from django.shortcuts import render
+from django.contrib import messages
 
 from . import models
 
@@ -22,11 +23,19 @@ def all_news(request):
 
 def detail(request, id):
     news = models.News.objects.get(id=id)
+
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        comment = request.POST['comment']
+        models.Comment.objects.create(news=news,name=name,email=email,comment=comment)
+        messages.success(request, 'Comment submitted but in moderation mode.')
+
     category = models.Category.objects.get(id=news.category.id)
-    related_news = category.news_set.all()
     context = {
         'news': news,
-        'related_news': related_news,
+        'related_news': category.news_set.all(),
+        'comments': models.Comment.objects.filter(news=news, status=True).order_by('-id'),
     }
     return render(request, 'detail.html', context)
 
