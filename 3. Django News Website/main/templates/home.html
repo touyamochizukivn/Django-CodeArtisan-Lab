@@ -10,28 +10,30 @@
 			  <div class="card-body">
 			    <h5 class="card-title">{{first_news.title}}</h5>
 			    <hr/>
-			    <p class="card-text"><a href="/detail/{{first_news.id}}" class="btn btn-sm btn-primary">Read Full</a></p>
+			    <p class="card-text"><a href="{% url 'detail' first_news.id %}" class="btn btn-sm btn-primary">Read Full</a></p>
 			  </div>
 			</div>
 		</div>
 		<!-- Right -->
 		<div class="col-md-5" style="max-height: 450px; overflow: auto;">
 			{% for news in three_news %}
-			<!-- News Box -->
-			<div class="card">
-			  <div class="row no-gutters">
-			    <div class="col-md-4">
-					<img src="media/{{news.image}}" class="card-img-top" alt="{{news.title}}">
-			    </div>
-			    <div class="col-md-8">
-			      <div class="card-body">
-			        <h5 class="card-title">{{news.title}}</h5>
-			        <p class="card-text"><a href="/detail/{{news.id}}" class="btn btn-sm btn-primary">Read Full</a></p>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			<hr/>
+				{% if forloop.counter0 < 4 and not forloop.first %}
+				<!-- News Box -->
+				<div class="card">
+					<div class="row no-gutters">
+						<div class="col-md-4">
+						<img src="media/{{news.image}}" class="card-img-top" alt="{{news.title}}">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 class="card-title">{{news.title}}</h5>
+								<p class="card-text"><a href="{% url 'detail' news.id %}" class="btn btn-sm btn-primary">Read Full</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr/>
+			{% endif %}
 			{% endfor %}
 		</div>
 	</div>
@@ -48,7 +50,7 @@
 				<div class="card-body">
 					<h5 class="card-title">{{news.title}}</h5>
 					<hr/>
-					<p class="card-text"><a href="#" class="btn btn-sm btn-primary">Read Full</a></p>
+					<p class="card-text"><a href="{% url 'detail' news.id %}" class="btn btn-sm btn-primary">Read Full</a></p>
 				</div>
 				</div>
 			</div>
