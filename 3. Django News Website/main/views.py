@@ -44,4 +44,4 @@ def category(request, id):
         'category': category,
         'all_news': category.news_set.all(),
     }
-    return render(request, 'all-news.html', context)
+    return render(request, 'category-news.html', context)

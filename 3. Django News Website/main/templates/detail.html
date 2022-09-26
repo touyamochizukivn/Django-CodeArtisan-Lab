@@ -6,14 +6,14 @@
 		<!-- Left -->
 		<div class="col-md-8">
 			<div class="card mb-3">
-                <img src="/media/{{news.image}}" class="card-img-top" alt="{{news.title}}">
+                <img src="{{news.image.url}}" class="card-img-top" alt="{{news.title}}">
 			  <div class="card-body">
 			    <h5 class="card-title">{{news.title}}</h5>
 			    <hr/>
 			    <p class="card-text">{{news.detail}}</p>
 			  </div>
 			  <div class="card-footer">
-			  	In <a href="/category/{{news.category.id}}">{{news.category.title}}</a>
+			  	In <a href="{% url 'category' news.category.id %}">{{news.category.title}}</a>
 			  </div>
 			</div>
 
@@ -69,7 +69,7 @@
 			{% for news in related_news %}
 				{% if forloop.counter < 4 %}
 				<div class="card mb-3 shadow">
-					<img src="/media/{{news.image}}" class="card-img-top" alt="{{news.title}}">
+					<img src="{{news.image.url}}" class="card-img-top" alt="{{news.title}}">
 					<div class="card-body">
 						<h5 class="card-title">{{news.title}}</h5>
 						<hr/>

@@ -6,7 +6,7 @@
 		<!-- Left -->
 		<div class="col-md-7">
 			<div class="card mb-3">
-			  <img src="media/{{first_news.image}}" class="card-img-top" alt="{{first_news.title}}">
+			  <img src="{{first_news.image.url}}" class="card-img-top" alt="{{first_news.title}}">
 			  <div class="card-body">
 			    <h5 class="card-title">{{first_news.title}}</h5>
 			    <hr/>
@@ -22,7 +22,7 @@
 				<div class="card">
 					<div class="row no-gutters">
 						<div class="col-md-4">
-						<img src="media/{{news.image}}" class="card-img-top" alt="{{news.title}}">
+						<img src="{{news.image.url}}" class="card-img-top" alt="{{news.title}}">
 						</div>
 						<div class="col-md-8">
 							<div class="card-body">
@@ -46,7 +46,7 @@
 			<!-- News box -->
 			<div class="col-md-3">
 				<div class="card mb-3 shadow">
-				<img src="/media/{{news.image}}" class="card-img-top" alt="{{news.title}}">
+				<img src="{{news.image.url}}" class="card-img-top" alt="{{news.title}}">
 				<div class="card-body">
 					<h5 class="card-title">{{news.title}}</h5>
 					<hr/>
