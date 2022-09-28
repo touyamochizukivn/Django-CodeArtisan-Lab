@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <title>Update Post</title>
+</head>
+<body>
+    <div class="container my-4">
+        <h3>Update Post</h3>
+        <div class="card my-3">
+            <h5 class="card-header">Update post</h5>
+            <div class="card-body">
+                <p><a class="btn btn-success" href="{% url 'list'%}">All</a></p>
+                {% if messages %}
+                    {% for msg in messages %}
+                        <p class="text-success">{{msg}}</p>
+                    {% endfor %}
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Title</th>
+                            <td><input value="{{post.title}}" name="title" type="text" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                            <th>Detail</th>
+                            <td><textarea name="detail" class="form-control">{{post.detail}}</textarea></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><button type="submit" class="btn btn-primary">Submit</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

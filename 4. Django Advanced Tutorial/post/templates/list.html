@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <title>All Post</title>
+</head>
+<body>
+    <div class="container my-4">
+        <h3>All Post</h3>
+        <p><a class="btn btn-success" href="{% url 'add'%}">Add</a></p>
+        {% for post in posts %}
+        <div class="card my-3">
+            <h5 class="card-header">{{post.title}}</h5>
+            <div class="card-body">
+                <p class="card-text">{{post.detail}}</p>
+                <p><a class="btn btn-success" href="{% url 'update' post.id%}">Update</a>
+                <a onclick="return confirm('Are you sure to delete?')" class="btn btn-danger" href="{% url 'delete' post.id%}">Delete</a></p>
+            </div>
+        </div>
+        {% endfor %}
+        <ul class="pagination">
+            {% if posts.has_previous %}
+            <li class="page-item">
+                <a href="?page=1" class="page-link"> << First </a>
+            </li>
+            <li class="page-item">
+                <a href="?page={{posts.previous_page_number}}" class="page-link"> Previous </a>
+            </li>
+            {% endif %}
+            <li class="page-item">
+                <a href="#" class="page-link"> Page {{ posts.number }} of {{ posts.paginator.num_pages }} </a>
+            </li>
+            {% if posts.has_next %}
+            <li class="page-item">
+                <a href="?page={{posts.next_page_number}}" class="page-link"> Next </a>
+            </li>
+            <li class="page-item">
+                <a href="?page={{posts.paginator.num_pages}}" class="page-link"> Last >> </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</body>
+</html>
