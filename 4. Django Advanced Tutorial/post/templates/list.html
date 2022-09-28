@@ -10,6 +10,22 @@
 </head>
 <body>
     <div class="container my-4">
+        {% comment %} search {% endcomment %}
+        <div class="jumbotron border shadow">
+            <div class="row">
+                <div class="col-md-8 offset-2">
+                    <form>
+                        <div class="input-group">
+                            <input name="q" type="text" class="form-control form-control-lg" placeholder="Search"/>
+                            <div class="input-group-append">
+                                <button class="btn btn-dark btn-lg">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% comment %} content {% endcomment %}
         <h3>All Post</h3>
         <p><a class="btn btn-success" href="{% url 'add'%}">Add</a></p>
         {% for post in posts %}
@@ -22,6 +38,7 @@
             </div>
         </div>
         {% endfor %}
+        {% comment %} pagination {% endcomment %}
         <ul class="pagination">
             {% if posts.has_previous %}
             <li class="page-item">

@@ -6,7 +6,11 @@ from . import models
 
 
 def list(request):
-    posts = models.Post.objects.all()
+    if 'q' in request.GET:
+        q = request.GET['q']
+        posts = models.Post.objects.filter(title__icontains=q)
+    else:
+        posts = models.Post.objects.all()
 
     paginator = Paginator(posts, 2)
     page_number = request.GET.get('page')
